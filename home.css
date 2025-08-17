@@ -1,0 +1,54 @@
+/* General styling for the body */
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #16a085 0%, #2980b9 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Container for the content */
+.home-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Logout button styling with hover effect */
+#logoutButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e74c3c;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+#logoutButton:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+}
