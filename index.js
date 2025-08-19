@@ -1,40 +1,52 @@
 document
   .getElementById("registerForm")
   .addEventListener("submit", function (event) {
-    //  form submission behavior
     event.preventDefault();
 
-    // Getting the values from the input fields
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const termsAccepted = document.getElementById("terms").checked;
+    const errorMessageDiv = document.getElementById("errorMessage");
+    errorMessageDiv.style.display = "none"; // Hide error message by default
 
-    // Create a user object to store
+    if (password !== confirmPassword) {
+      errorMessageDiv.textContent = "Passwords do not match. Please try again.";
+      errorMessageDiv.style.display = "block";
+      return;
+    }
+
+    if (!termsAccepted) {
+      errorMessageDiv.textContent =
+        "You must accept the terms and conditions to register.";
+      errorMessageDiv.style.display = "block";
+      return;
+    }
+
     const user = {
       email: email,
       password: password,
     };
 
     try {
-      // Checking if a user with this email already exists
       const existingUsers = JSON.parse(localStorage.getItem("users")) || {};
       if (existingUsers[email]) {
-        alert(
-          "An account with this email already exists. Please login or use a different email."
-        );
+        errorMessageDiv.textContent =
+          "An account with this email already exists. Please login or use a different email.";
+        errorMessageDiv.style.display = "block";
         return;
       }
 
-      // Store the new user in localStorage
       existingUsers[email] = user;
       localStorage.setItem("users", JSON.stringify(existingUsers));
 
-      // Show a success message
       alert("Registration successful! You can now log in.");
 
-      // Redirect to the login page
       window.location.href = "login.html";
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("An error occurred during registration. Please try again.");
+      errorMessageDiv.textContent =
+        "An error occurred during registration. Please try again.";
+      errorMessageDiv.style.display = "block";
     }
   });

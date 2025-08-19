@@ -1,29 +1,41 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const rememberMeCheckbox = document.getElementById("rememberMe");
+  const emailInput = document.getElementById("email");
+
+  // Check localStorage for a remembered user and pre-fill the email field
+  const rememberedEmail = localStorage.getItem("rememberedEmail");
+  if (rememberedEmail) {
+    emailInput.value = rememberedEmail;
+    rememberMeCheckbox.checked = true;
+  }
+});
+
 document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
-    // form submission behavior
     event.preventDefault();
 
-    // Getting the values from the input fields
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const rememberMe = document.getElementById("rememberMe").checked;
     const errorMessageDiv = document.getElementById("errorMessage");
+    errorMessageDiv.style.display = "none"; // Hide error message by default
 
     try {
-      // Getting all registered users from localStorage
       const users = JSON.parse(localStorage.getItem("users")) || {};
 
-      // Check if the user exists and the password is correct
       if (users[email] && users[email].password === password) {
-        // Store the logged-in user's email in sessionStorage
-        sessionStorage.setItem("loggedInUser", email);
+        // If "Remember me" is checked, store the email
+        if (rememberMe) {
+          localStorage.setItem("rememberedEmail", email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
 
-        // Redirect to the home page
+        sessionStorage.setItem("loggedInUser", email);
         window.location.href = "home.html";
       } else {
-        // Show an error message for incorrect credentials
-        errorMessageDiv.textContent =
-          "Invalid email or password! Please try again.";
+        errorMessageDiv.textContent = "Invalid email or password.";
         errorMessageDiv.style.display = "block";
       }
     } catch (error) {

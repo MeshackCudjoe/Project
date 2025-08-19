@@ -8,38 +8,118 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="register-container">
-      <h1>Register</h1>
-      <form id="registerForm">
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Enter your email"
-          />
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            placeholder="Create a password"
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <div class="login-link">
-        Already have an account? <a href="login.html">Login here</a>
+    <div class="background">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+    </div>
+
+    <div class="main-container">
+      <div class="glass-card register-card">
+        <h2 class="card-title">Sign Up</h2>
+        <form id="registerForm">
+          <div class="input-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="input-icon"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="input-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="input-icon"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-8.66"></path>
+              <path d="M12.5 7.5v5h4"></path>
+            </svg>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="input-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="input-icon"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-8.66"></path>
+              <path d="M12.5 7.5v5h4"></path>
+            </svg>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+
+          <!-- "Accept terms and conditions" checkbox -->
+          <div class="checkbox-container">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">Accept Terms & Conditions</label>
+          </div>
+
+          <div id="errorMessage" class="error-message"></div>
+
+          <button type="submit" class="cta-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="button-icon"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Sign Up
+          </button>
+        </form>
+        <p class="link-text">
+          Already have an account? <a href="login.html">Sign In</a>
+        </p>
       </div>
     </div>
 
